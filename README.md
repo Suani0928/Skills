@@ -16,7 +16,7 @@ The skills in this repository follow a few shared principles:
 
 ## Skills
 
-### `mathematical-research`
+### `math-researchen`
 
 A rigorous mathematical research workflow for investigating difficult problems, developing proofs, exploring constructions, and producing research-quality reports.
 
