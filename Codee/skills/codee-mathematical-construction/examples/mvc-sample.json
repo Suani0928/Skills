@@ -1,0 +1,12 @@
+{
+  "protocol": "codee-mvc/1.0",
+  "project_id": "sample-representation-c2",
+  "target_claim_ids": ["C1"],
+  "implementation_fidelity": "UNCHECKED",
+  "mathematical_validity": "UNCHECKED",
+  "project_status": "INCONCLUSIVE",
+  "obligations": [{
+    "obligation_id": "O1", "claim_id": "C1", "claim_latex": "\\rho(a)^2=I_2", "scope": "Q and C2 generator a", "source_refs": [{"document_id":"user-prompt"}],
+    "depends_on": [], "preconditions": ["matrix entries in Q"], "evidence": [], "execution": [], "status": "NOT_RUN", "review": {"note":"Example metadata only. Run a genuine verifier to claim success."}
+  }]
+}

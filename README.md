@@ -16,12 +16,13 @@ The skills in this repository follow a few shared principles:
 
 ## Plugins
 
-This repository includes complete source snapshots of two installed plugins:
+This repository includes complete source snapshots of three installed plugins:
 
 | Directory | Plugin version | Plugin identifier | Purpose |
 | --- | --- | --- | --- |
 | [`Researchee/`](Researchee/) | `2.5.0` | `mathematical-research` | Mathematical discovery, proofs, constructions, and research records |
 | [`Writee/`](Writee/) | `0.1.0` | `writee` | Mathematical manuscript writing, prior-art attribution, and citation review |
+| [`Codee/`](Codee/) | `1.1.1` | `codee` | Executable mathematical constructions and computational verification |
 
 ### Researchee
 
@@ -37,9 +38,13 @@ Entry point: [`Writee/skills/writee-mathematical-writing/SKILL.md`](Writee/skill
 
 The plugins can be used independently. For a research-to-writing workflow, pass Researchee's results, proofs, unresolved issues, and source records to Writee. The [handoff guidance](Researchee/skills/mathematical-research/references/writee-handoff.md) and [optional YAML template](Writee/skills/writee-mathematical-writing/templates/research-handoff.yaml) describe this exchange; they do not implement automatic calls between the plugins.
 
+### Codee
+
+Codee turns explicit constructions, algorithms, examples, and counterexamples from mathematical papers, Writee manuscripts, or Researchee handoffs into annotated, runnable code. It uses available mathematical software to check both the implementation and the claimed properties. The package includes Python examples and schemas for recording verification results. See the [Codee skill](Codee/skills/codee-mathematical-construction/SKILL.md).
+
 ## Legacy skill
 
-The earlier standalone `math-researchen/` skill remains in repository history and the committed tree for continuity. Use the plugin release directories above for the imported releases.
+The earlier standalone `math-researchen/` skill remains in repository history. Use the plugin release directories above for the imported releases.
 
 ### `math-researchen`
 
@@ -75,11 +80,21 @@ Writee/
     ├── agents/openai.yaml
     ├── references/
     └── templates/
+Codee/
+├── plugin.json
+├── .codex-plugin/plugin.json
+├── README.md
+└── skills/codee-mathematical-construction/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    ├── examples/
+    ├── references/
+    └── schemas/
 ```
 
-`Researchee/` and `Writee/` are repository directory names. Their original plugin identifiers and internal paths have been preserved. Plugin release versions come from the manifests; Researchee's skill-level `metadata.version` remains `1.0.0` as supplied and is separate from its plugin version.
+`Researchee/`, `Writee/`, and `Codee/` are repository directory names. Their original plugin identifiers and internal paths have been preserved. Plugin release versions come from the manifests. Researchee's skill-level `metadata.version` remains `1.0.0` as supplied and is separate from its plugin version. Codee’s original README heading says `v1.1.0`. Both Codee manifests identify the installed release as `1.1.1`.
 
-The legacy standalone skill uses this layout:
+The legacy standalone skill used this layout:
 
 ```text
 <skill-name>/
@@ -93,9 +108,9 @@ The legacy standalone skill uses this layout:
 
 ## Usage
 
-1. Choose `Researchee/` or `Writee/` and read the linked `SKILL.md`.
-2. Keep the complete plugin directory together, including `plugin.json`, `.codex-plugin/`, and `skills/`. The imported releases contain 10 and 15 files respectively.
-3. Follow the installation instructions of a host that supports the package format. Cloning the repository alone does not activate either plugin.
+1. Choose `Researchee/`, `Writee/`, or `Codee/` and read the linked `SKILL.md`.
+2. Keep the complete plugin directory together, including `plugin.json`, `.codex-plugin/`, and `skills/`. Researchee, Writee, and Codee contain 10, 15, and 19 source files, respectively.
+3. Follow the installation and activation instructions for a host that supports the package format.
 4. If using a skill independently, retain its supporting references, templates, assets, and agent metadata.
 
 For an upload that accepts plugin archives, package each plugin separately, with its `plugin.json` at the archive root or in the single enclosing plugin directory. Include hidden files. Do not package the entire repository as one plugin.

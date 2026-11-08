@@ -1,0 +1,34 @@
+{
+  "interface": {
+    "displayName": "Codee",
+    "shortDescription": "Rigorous Mathematical Coding",
+    "longDescription": "Rigorous Mathematical Coding: turn explicit constructions, examples, algorithms and counterexamples from mathematical papers, Writee manuscripts and Researchee handoffs into well-commented executable code. Run available mathematical software to check both faithful implementation and claimed mathematical properties, and present concise execution results without default lengthy reports.",
+    "developerName": "kc",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "\u8bf7\u8bfb\u53d6\u8fd9\u7bc7\u6570\u5b66\u8bba\u6587\uff0c\u63d0\u53d6\u663e\u5f0f\u6784\u9020\uff0c\u9009\u62e9\u5408\u9002\u7684\u6570\u5b66\u8f6f\u4ef6\uff0c\u751f\u6210\u53ef\u8fd0\u884c\u4e14\u53ef\u9a8c\u8bc1\u7684\u4ee3\u7801\u3002",
+      "\u8bf7\u5bf9\u8fd9\u7bc7\u8bba\u6587\u4e2d\u7684\u53cd\u4f8b\u8fdb\u884c\u5b8c\u6574\u8ba1\u7b97\u8ba4\u8bc1\uff1a\u5efa\u7acb\u9a8c\u8bc1\u4e49\u52a1\u4f9d\u8d56\u56fe\u3001\u751f\u6210\u7a0b\u5e8f\u548c\u8bc1\u4e66\uff0c\u9010\u9879\u62a5\u544a\u771f\u5b9e\u6267\u884c\u72b6\u6001\u3002",
+      "\u8bf7\u63a5\u6536 Researchee \u7684 handoff \u6216 Writee \u7684\u8bba\u6587\uff0c\u5c06\u5176\u4e2d\u7684\u663e\u5f0f\u6570\u5b66\u6784\u9020\u7f16\u8bd1\u4e3a\u7814\u7a76\u7ea7\u7a0b\u5e8f\u3002"
+    ]
+  },
+  "name": "codee",
+  "version": "1.1.1",
+  "description": "Rigorous Mathematical Coding: implement explicit research-level mathematical constructions as annotated executable code, run practical checks, and report concise results across mathematical domains.",
+  "author": {
+    "name": "kc",
+    "email": "t1328768252@gmail.com"
+  },
+  "keywords": [
+    "mathematics",
+    "research",
+    "computer-algebra",
+    "verification",
+    "construction",
+    "code-generation",
+    "reproducibility"
+  ],
+  "skills": "./skills"
+}

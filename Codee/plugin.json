@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "codee",
+  "version": "1.1.1",
+  "description": "Rigorous Mathematical Coding: implement explicit research-level mathematical constructions as annotated executable code, run practical checks, and report concise results across mathematical domains.",
+  "author": {
+    "name": "kc",
+    "email": "t1328768252@gmail.com"
+  },
+  "keywords": [
+    "mathematics",
+    "research",
+    "computer-algebra",
+    "verification",
+    "construction",
+    "code-generation",
+    "reproducibility"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Codee",
+        "shortDescription": "Rigorous Mathematical Coding",
+        "longDescription": "Rigorous Mathematical Coding: turn explicit constructions, examples, algorithms and counterexamples from mathematical papers, Writee manuscripts and Researchee handoffs into well-commented executable code. Run available mathematical software to check both faithful implementation and claimed mathematical properties, and present concise execution results without default lengthy reports.",
+        "developerName": "kc",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": [
+          "请读取这篇数学论文，提取显式构造，选择合适的数学软件，生成可运行且可验证的代码。",
+          "请对这篇论文中的反例进行完整计算认证：建立验证义务依赖图、生成程序和证书，逐项报告真实执行状态。",
+          "请接收 Researchee 的 handoff 或 Writee 的论文，将其中的显式数学构造编译为研究级程序。"
+        ]
+      }
+    }
+  }
+}

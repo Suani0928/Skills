@@ -1,0 +1,13 @@
+{
+  "protocol": "codee-mcr/1.0",
+  "project_id": "sample-representation-c2",
+  "source_documents": [{"id": "user-prompt", "locator": "user-supplied elementary example"}],
+  "ambient_context": {"description": "Two-dimensional rational representation of a cyclic group of order two", "base_ring": "Q", "characteristic": 0},
+  "objects": [
+    {"id": "G", "type": "group", "definition": "C2=<a|a^2=1>", "exactness": "EXACT", "source_refs": [{"document_id":"user-prompt"}]},
+    {"id": "V", "type": "representation", "definition": "rho(a)=[[0,1],[1,0]] over Q", "ambient":"Q^2", "exactness": "EXACT", "source_refs": [{"document_id":"user-prompt"}]}
+  ],
+  "operations": [{"id": "relation-check", "operation": "MatrixGroupRelations", "inputs": ["G", "V"], "outputs": [], "preconditions": ["char(Q) != 2"]}],
+  "claims": [{"id": "C1", "statement_latex": "\\rho(a)^2=I_2", "quantifiers": "for the given generator a", "premises": ["G is C2"], "depends_on": [], "origin": "USER_PROVIDED", "source_refs": [{"document_id":"user-prompt"}]}],
+  "targets": ["C1"]
+}

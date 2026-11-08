@@ -1,0 +1,7 @@
+interface:
+  display_name: Codee
+  short_description: Rigorous Mathematical Coding
+  default_prompt: Implement and independently verify the explicit mathematical constructions
+    in this research material.
+policy:
+  allow_implicit_invocation: true

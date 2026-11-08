@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codee.invalid/schemas/mvc-v1.schema.json",
+  "title": "Codee Mathematical Verification Certificate v1",
+  "type": "object",
+  "required": ["protocol", "project_id", "target_claim_ids", "implementation_fidelity", "mathematical_validity", "project_status", "obligations"],
+  "properties": {
+    "protocol": {"const": "codee-mvc/1.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "target_claim_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "implementation_fidelity": {"enum": ["UNCHECKED", "VERIFIED", "REFUTED", "INCONCLUSIVE"]},
+    "mathematical_validity": {"enum": ["UNCHECKED", "VERIFIED", "REFUTED", "INCONCLUSIVE"]},
+    "project_status": {"enum": ["CERTIFIED", "PARTIALLY_VERIFIED", "REFUTED", "INCONCLUSIVE"]},
+    "assurance_level": {"enum": ["MACHINE_FORMAL", "EXACT_REPLAY_WITH_THEOREMS", "THEOREM_ASSISTED_HUMAN_AUDIT"]},
+    "obligations": {"type": "array", "items": {"$ref": "#/$defs/obligation"}},
+    "environment": {"type": "object"}
+  },
+  "allOf": [{"if": {"properties": {"project_status": {"const": "CERTIFIED"}}}, "then": {"required": ["assurance_level"]}}],
+  "additionalProperties": true,
+  "$defs": {
+    "obligation": {
+      "type": "object", "required": ["obligation_id", "claim_id", "claim_latex", "scope", "depends_on", "preconditions", "evidence", "execution", "status", "review"],
+      "properties": {
+        "obligation_id": {"type": "string", "minLength": 1},
+        "claim_id": {"type": "string", "minLength": 1},
+        "claim_latex": {"type": "string", "minLength": 1},
+        "scope": {"type": "string"},
+        "source_refs": {"type": "array"},
+        "depends_on": {"type": "array", "items": {"type": "string"}},
+        "preconditions": {"type": "array", "items": {"type": "string"}},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+        "execution": {"type": "array", "items": {"type": "object"}},
+        "status": {"enum": ["NOT_RUN", "BLOCKED", "EXECUTION_ERROR", "INCONCLUSIVE", "VERIFIED", "REFUTED"]},
+        "review": {"type": "object"}
+      }, "additionalProperties": true
+    },
+    "evidence": {"type": "object", "required": ["kind", "description"], "properties": {"kind": {"enum": ["EXACT_COMPUTATION", "THEOREM_ASSISTED", "FORMAL_PROOF", "NUMERICAL_EXPERIMENT"]}, "description": {"type": "string", "minLength": 1}, "artifact": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "checker": {"type": "string"}, "checked": {"type": "boolean"}}, "additionalProperties": true}
+  }
+}
