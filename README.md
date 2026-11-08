@@ -14,7 +14,32 @@ The skills in this repository follow a few shared principles:
 - **Traceable results.** Distinguish established findings from hypotheses, experiments, and unfinished work.
 - **Iterative improvement.** Revise skills in light of actual use, observed failure modes, and new requirements.
 
-## Skills
+## Plugins
+
+This repository includes complete source snapshots of two installed plugins:
+
+| Directory | Plugin version | Plugin identifier | Purpose |
+| --- | --- | --- | --- |
+| [`Researchee/`](Researchee/) | `2.5.0` | `mathematical-research` | Mathematical discovery, proofs, constructions, and research records |
+| [`Writee/`](Writee/) | `0.1.0` | `writee` | Mathematical manuscript writing, prior-art attribution, and citation review |
+
+### Researchee
+
+Start with a mathematical problem, its hypotheses, and any existing results. Researchee investigates possible approaches, develops proofs or constructions, checks arguments, and records what has been established and what remains unresolved. Manuscript preparation belongs to Writee.
+
+Entry point: [`Researchee/skills/mathematical-research/SKILL.md`](Researchee/skills/mathematical-research/SKILL.md).
+
+### Writee
+
+Start with research results, proofs, a draft manuscript, or reference papers. Writee develops and revises mathematical prose, checks attribution of known results, reviews citations, and organizes LaTeX manuscripts. A full-paper delivery normally includes `main.tex`, `references.bib`, and `writing-audit.md`; the supplied templates are starting points to be completed for each project.
+
+Entry point: [`Writee/skills/writee-mathematical-writing/SKILL.md`](Writee/skills/writee-mathematical-writing/SKILL.md).
+
+The plugins can be used independently. For a research-to-writing workflow, pass Researchee's results, proofs, unresolved issues, and source records to Writee. The [handoff guidance](Researchee/skills/mathematical-research/references/writee-handoff.md) and [optional YAML template](Writee/skills/writee-mathematical-writing/templates/research-handoff.yaml) describe this exchange; they do not implement automatic calls between the plugins.
+
+## Legacy skill
+
+The earlier standalone `math-researchen/` skill remains in repository history and the committed tree for continuity. Use the plugin release directories above for the imported releases.
 
 ### `math-researchen`
 
@@ -30,11 +55,31 @@ Its core principles include:
 
 The skill is domain-general, with optional guidance for algebraic-geometric constructions, computational experimentation, literature analysis, proof verification, and mathematical writing.
 
-> **Note:** Additional skills will be documented here as they are added. This list intentionally includes only skills confirmed to be part of the collection.
-
 ## Repository organization
 
-A typical skill in this repository may use the following structure:
+The imported plugins retain all their original files, including hidden compatibility manifests:
+
+```text
+Researchee/
+├── plugin.json
+├── .codex-plugin/plugin.json
+└── skills/mathematical-research/
+    ├── SKILL.md
+    ├── assets/
+    └── references/
+Writee/
+├── plugin.json
+├── .codex-plugin/plugin.json
+└── skills/writee-mathematical-writing/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    ├── references/
+    └── templates/
+```
+
+`Researchee/` and `Writee/` are repository directory names. Their original plugin identifiers and internal paths have been preserved. Plugin release versions come from the manifests; Researchee's skill-level `metadata.version` remains `1.0.0` as supplied and is separate from its plugin version.
+
+The legacy standalone skill uses this layout:
 
 ```text
 <skill-name>/
@@ -48,12 +93,18 @@ A typical skill in this repository may use the following structure:
 
 ## Usage
 
-1. Open the directory of the skill you want to use and read its `SKILL.md`.
-2. Use the skill in an AI environment that supports skill files, or adapt the core instructions to that environment's custom-instruction mechanism.
-3. Keep referenced files with the skill so its instructions remain complete.
-4. Follow any skill-specific setup notes; packaging and installation vary by platform.
+1. Choose `Researchee/` or `Writee/` and read the linked `SKILL.md`.
+2. Keep the complete plugin directory together, including `plugin.json`, `.codex-plugin/`, and `skills/`. The imported releases contain 10 and 15 files respectively.
+3. Follow the installation instructions of a host that supports the package format. Cloning the repository alone does not activate either plugin.
+4. If using a skill independently, retain its supporting references, templates, assets, and agent metadata.
+
+For an upload that accepts plugin archives, package each plugin separately, with its `plugin.json` at the archive root or in the single enclosing plugin directory. Include hidden files. Do not package the entire repository as one plugin.
 
 Some ChatGPT environments support private plugins containing skills. A skill directory by itself is **not** necessarily an installable plugin: plugin packaging may require a separate manifest and compatible directory layout.
+
+## Source integrity
+
+These snapshots preserve the installed source files without modifying their manifests, instructions, or templates. They contain no MCP server configuration or bundled service credentials. Author names and contact emails remain in the original manifests. Static file checks do not establish runtime behavior or mathematical correctness.
 
 ## Development guidelines
 

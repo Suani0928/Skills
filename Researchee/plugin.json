@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mathematical-research",
+  "version": "2.5.0",
+  "description": "Rigorous mathematical discovery, proofs, constructions, and research records; manuscript writing is handled by Writee.",
+  "author": {
+    "name": "kc",
+    "email": "t1328768252@gmail.com"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Researchee",
+        "shortDescription": "Rigorous math research",
+        "longDescription": "Investigate mathematical questions with proofs, constructions, selective mathematical literature, rigorous validation, and research handoffs for Writee. Paper writing and publication editing belong to Writee.",
+        "developerName": "kc",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": "Investigate this mathematical problem rigorously, focusing on research, proof and construction rather than manuscript writing."
+      }
+    }
+  }
+}

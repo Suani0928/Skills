@@ -1,0 +1,6 @@
+interface:
+  display_name: Writee
+  short_description: Write rigorous, properly attributed mathematical papers.
+  default_prompt: Convert these mathematical research results into a carefully referenced LaTeX manuscript, checking prior art and preserving the author's intended mathematics.
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,10 @@
+# Optional Writee intake; ordinary research reports are equally acceptable.
+protocol: writee-handoff/1.0
+research:
+  source: user-supplied-research-report
+  outcome: partial
+claims: []
+proof_dependencies: []
+related_literature: []
+known_gaps: []
+style_references: []

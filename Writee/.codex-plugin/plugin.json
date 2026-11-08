@@ -1,0 +1,31 @@
+{
+  "author": {
+    "email": "t1328768252@gmail.com",
+    "name": "kc"
+  },
+  "description": "Research-guided mathematical manuscript writing with mandatory attribution of known results, rigorous citation verification, reference-guided exposition, and LaTeX manuscript review.",
+  "interface": {
+    "capabilities": [],
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Use Writee to turn my Researchee results into a rigorously cited mathematical paper in LaTeX.",
+      "Analyze the writing style of a paper I provide and draft my Introduction, with verified references.",
+      "Audit this mathematical manuscript for prior art, missing attribution, and citation accuracy."
+    ],
+    "developerName": "kc",
+    "displayName": "Writee",
+    "longDescription": "Transform mathematical research into coherent, citation-audited LaTeX manuscripts. Detect and attribute previously known results even when proofs are independently reconstructed; adapt high-level exposition to reference papers; preserve mathematical integrity.",
+    "shortDescription": "Rigorous mathematical writing"
+  },
+  "keywords": [
+    "mathematics",
+    "academic-writing",
+    "latex",
+    "citations",
+    "bibtex",
+    "prior-art"
+  ],
+  "name": "writee",
+  "skills": "./skills",
+  "version": "0.1.0"
+}
