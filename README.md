@@ -1,140 +1,31 @@
 # Research Skills
 
-A personal collection of reusable AI skills developed through iterative collaboration with ChatGPT.
+Three AI plugins for mathematical research, computational verification, and manuscript writing. Use them independently or pass proofs, constructions, and source notes between them as your work develops.
 
-The goal of this repository is to turn carefully considered working preferences into portable, inspectable instructions—not to accumulate elaborate prompts. Each skill is designed for a specific workflow, with a concise core protocol and additional references only where they are useful.
+## Choose a plugin
 
-## Philosophy
-
-The skills in this repository follow a few shared principles:
-
-- **Substance over ceremony.** Instructions should help the model do the work, not spend its effort describing a workflow.
-- **Autonomy with accountability.** Encourage independent exploration while maintaining clear standards for verification and reporting.
-- **Adaptive rather than mechanical.** Use tools, references, and intermediate checks when they improve the task; avoid mandatory steps without a purpose.
-- **Traceable results.** Distinguish established findings from hypotheses, experiments, and unfinished work.
-- **Iterative improvement.** Revise skills in light of actual use, observed failure modes, and new requirements.
-
-## Plugins
-
-This repository includes complete source snapshots of three installed plugins:
-
-| Directory | Plugin version | Plugin identifier | Purpose |
+| Plugin | Version | Start with | What you get |
 | --- | --- | --- | --- |
-| [`Researchee/`](Researchee/) | `2.5.0` | `mathematical-research` | Mathematical discovery, proofs, constructions, and research records |
-| [`Writee/`](Writee/) | `0.1.0` | `writee` | Mathematical manuscript writing, prior-art attribution, and citation review |
-| [`Codee/`](Codee/) | `1.1.1` | `codee` | Executable mathematical constructions and computational verification |
+| [Researchee](Researchee/) | `2.5.0` | A problem, its hypotheses, and any partial results | Proofs, constructions, or counterexamples. For an unresolved problem, a research record with established results and open steps. |
+| [Codee](Codee/) | `1.1.1` | An explicit construction, example, or algorithm | Annotated code, commands to run it, and results from checks it can perform with the available mathematical software. |
+| [Writee](Writee/) | `0.1.0` | A proof, research report, or manuscript draft | LaTeX sections or a full manuscript, with checks on prior work, citations, and attribution. |
 
-### Researchee
+## From a research question to a manuscript
 
-Start with a mathematical problem, its hypotheses, and any existing results. Researchee investigates possible approaches, develops proofs or constructions, checks arguments, and records what has been established and what remains unresolved. Manuscript preparation belongs to Writee.
+1. **Investigate with Researchee.** Give it the exact problem and hypotheses. Ask it to pursue a proof or construction and record which claims are established and which still need work. [Research skill](Researchee/skills/mathematical-research/SKILL.md)
+2. **Check an explicit construction with Codee.** Pass the formulas, definitions, and specific properties you want checked. Codee reports whether the program implements the construction faithfully and which mathematical checks it ran. [Coding skill](Codee/skills/codee-mathematical-construction/SKILL.md) · [Python examples](Codee/skills/codee-mathematical-construction/examples/)
+3. **Prepare the manuscript with Writee.** Pass the proofs, sources, and relevant computational results. A full manuscript can include `main.tex`, `references.bib`, and `writing-audit.md`. [Writing skill](Writee/skills/writee-mathematical-writing/SKILL.md)
 
-Entry point: [`Researchee/skills/mathematical-research/SKILL.md`](Researchee/skills/mathematical-research/SKILL.md).
+Start at the step that matches the material you already have. When moving between plugins, pass the relevant files or excerpts yourself. Keep the hypotheses, source references, and limits of any computational check with the result they support. [Research-to-writing handoff](Researchee/skills/mathematical-research/references/writee-handoff.md) · [Codee handoffs](Codee/skills/codee-mathematical-construction/references/handoffs.md)
 
-### Writee
+## Use the source packages
 
-Start with research results, proofs, a draft manuscript, or reference papers. Writee develops and revises mathematical prose, checks attribution of known results, reviews citations, and organizes LaTeX manuscripts. A full-paper delivery normally includes `main.tex`, `references.bib`, and `writing-audit.md`; the supplied templates are starting points to be completed for each project.
+Each plugin directory is a complete source snapshot. Keep `plugin.json`, the hidden `.codex-plugin/` directory, and `skills/` together when importing the package into a compatible host. Follow that host’s installation instructions.
 
-Entry point: [`Writee/skills/writee-mathematical-writing/SKILL.md`](Writee/skills/writee-mathematical-writing/SKILL.md).
+To read a skill on GitHub, open its `SKILL.md` from the links above. The nearby references, templates, and examples provide supporting material for specific tasks.
 
-The plugins can be used independently. For a research-to-writing workflow, pass Researchee's results, proofs, unresolved issues, and source records to Writee. The [handoff guidance](Researchee/skills/mathematical-research/references/writee-handoff.md) and [optional YAML template](Writee/skills/writee-mathematical-writing/templates/research-handoff.yaml) describe this exchange; they do not implement automatic calls between the plugins.
-
-### Codee
-
-Codee turns explicit constructions, algorithms, examples, and counterexamples from mathematical papers, Writee manuscripts, or Researchee handoffs into annotated, runnable code. It uses available mathematical software to check both the implementation and the claimed properties. The package includes Python examples and schemas for recording verification results. See the [Codee skill](Codee/skills/codee-mathematical-construction/SKILL.md).
-
-## Legacy skill
-
-The earlier standalone `math-researchen/` skill remains in repository history. Use the plugin release directories above for the imported releases.
-
-### `math-researchen`
-
-A rigorous mathematical research workflow for investigating difficult problems, developing proofs, exploring constructions, and producing research-quality reports.
-
-Its core principles include:
-
-- **Literature–reasoning iteration:** begin with targeted literature research, then alternate mathematical reasoning and further reading as concrete obstacles arise.
-- **Research-route selection:** identify substantively different approaches, rank them by success prospects and immediate research priority, and choose an approach for sustained investigation.
-- **Deep investigation and persistence:** actively work on decisive lemmas and constructions, repair failed arguments, and reassess alternative routes rather than stopping at a research plan.
-- **Mathematical integrity:** preserve the original problem and its hypotheses; distinguish rigorous proofs from conjectures, computational evidence, and conditional conclusions.
-- **Result-oriented reporting:** default to publication-style mathematical English and LaTeX; when the problem remains unresolved, include a compact **Research Continuation Record** with precise obstacles, reusable results, and prioritized next steps.
-
-The skill is domain-general, with optional guidance for algebraic-geometric constructions, computational experimentation, literature analysis, proof verification, and mathematical writing.
-
-## Repository organization
-
-The imported plugins retain all their original files, including hidden compatibility manifests:
-
-```text
-Researchee/
-├── plugin.json
-├── .codex-plugin/plugin.json
-└── skills/mathematical-research/
-    ├── SKILL.md
-    ├── assets/
-    └── references/
-Writee/
-├── plugin.json
-├── .codex-plugin/plugin.json
-└── skills/writee-mathematical-writing/
-    ├── SKILL.md
-    ├── agents/openai.yaml
-    ├── references/
-    └── templates/
-Codee/
-├── plugin.json
-├── .codex-plugin/plugin.json
-├── README.md
-└── skills/codee-mathematical-construction/
-    ├── SKILL.md
-    ├── agents/openai.yaml
-    ├── examples/
-    ├── references/
-    └── schemas/
-```
-
-`Researchee/`, `Writee/`, and `Codee/` are repository directory names. Their original plugin identifiers and internal paths have been preserved. Plugin release versions come from the manifests. Researchee's skill-level `metadata.version` remains `1.0.0` as supplied and is separate from its plugin version. Codee’s original README heading says `v1.1.0`. Both Codee manifests identify the installed release as `1.1.1`.
-
-The legacy standalone skill used this layout:
-
-```text
-<skill-name>/
-├── SKILL.md                 # Entry point and core behavioral instructions
-├── references/              # Detailed, selectively loaded guidance
-├── assets/                  # Templates or other supporting files
-└── README.md                # Skill-specific documentation (optional)
-```
-
-`SKILL.md` is the primary source of instructions. Supporting materials should remain modular so that a skill need not load every reference for every task. Individual skills may have fewer or different files depending on their needs.
-
-## Usage
-
-1. Choose `Researchee/`, `Writee/`, or `Codee/` and read the linked `SKILL.md`.
-2. Keep the complete plugin directory together, including `plugin.json`, `.codex-plugin/`, and `skills/`. Researchee, Writee, and Codee contain 10, 15, and 19 source files, respectively.
-3. Follow the installation and activation instructions for a host that supports the package format.
-4. If using a skill independently, retain its supporting references, templates, assets, and agent metadata.
-
-For an upload that accepts plugin archives, package each plugin separately, with its `plugin.json` at the archive root or in the single enclosing plugin directory. Include hidden files. Do not package the entire repository as one plugin.
-
-Some ChatGPT environments support private plugins containing skills. A skill directory by itself is **not** necessarily an installable plugin: plugin packaging may require a separate manifest and compatible directory layout.
-
-## Source integrity
-
-These snapshots preserve the installed source files without modifying their manifests, instructions, or templates. They contain no MCP server configuration or bundled service credentials. Author names and contact emails remain in the original manifests. Static file checks do not establish runtime behavior or mathematical correctness.
-
-## Development guidelines
-
-When creating or revising a skill:
-
-1. Define the task, intended use cases, and non-negotiable constraints.
-2. Keep the main `SKILL.md` focused on the decisions and behaviors that actually matter.
-3. Move detailed or specialized procedures into optional references.
-4. Test against realistic tasks, particularly cases where previous model behavior was unsatisfactory.
-5. Update instructions based on observed results rather than increasing complexity by default.
-
-## Status
-
-This is an evolving personal collection. The skills are working research and productivity tools, not guarantees of correctness or complete solutions. Mathematical claims, citations, code, and other consequential outputs should be independently verified where appropriate.
+Versions in the table come from the plugin manifests. Codee’s bundled README still has a `v1.1.0` heading. Both of its manifests specify `1.1.1`.
 
 ## License
 
-No license has been specified yet. See the repository's `LICENSE` file if one is added later.
+A license has yet to be specified for this repository.
