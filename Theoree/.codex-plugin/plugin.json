@@ -1,0 +1,29 @@
+{
+  "author": {
+    "email": "t1328768252@gmail.com",
+    "name": "kc"
+  },
+  "description": "Discover and develop conceptually economical, nonredundant mathematical structures that ultimately advance the user's original research problem.",
+  "interface": {
+    "capabilities": [],
+    "category": "Education",
+    "defaultPrompt": [
+      "Explore a hidden common structure behind these mathematical phenomena, and try to prove its first non-formal consequence.",
+      "Invent a conceptually economical theory that may advance my mathematical problem. Do not merely reformulate the obstruction.",
+      "Critically examine this candidate mathematical theory for definitional redundancy, counterexamples, and an actual proof-producing mechanism."
+    ],
+    "developerName": "kc",
+    "displayName": "Theoree",
+    "longDescription": "Find hidden common mathematical structures, test whether they add genuine information beyond established frameworks, and develop minimal theories with rigorous consequences linked to the original research goal.",
+    "shortDescription": "Mathematical theory discovery"
+  },
+  "keywords": [
+    "mathematics",
+    "theory discovery",
+    "mathematical research",
+    "structural unification"
+  ],
+  "name": "theoree",
+  "skills": "./skills",
+  "version": "0.1.0"
+}
